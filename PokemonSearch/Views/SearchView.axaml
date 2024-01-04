@@ -1,0 +1,194 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="550"
+             Loaded="UserControl_Loaded"
+        xmlns:vm="using:PokemonSearch.ViewModels"
+        x:DataType="vm:SearchViewModel"
+			 x:Class="PokemonSearch.Views.SearchView">
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:SearchViewModel />
+	</Design.DataContext>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"></ColumnDefinition>
+			<ColumnDefinition Width="5*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"></RowDefinition>
+			<RowDefinition Height="3*"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+			<Label FontSize="15" VerticalAlignment="Center">符合条件的宝可梦</Label>
+			<ComboBox Width="120"
+				Margin="0,15,0,0"
+				HorizontalAlignment="Center" ></ComboBox>
+		</StackPanel>
+		<Grid
+			Grid.Row="1"
+			>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="3*"></RowDefinition>
+				<RowDefinition Height="1*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<StackPanel
+				HorizontalAlignment="Center"
+				>
+				<StackPanel Orientation="Horizontal" >
+					<Label VerticalAlignment="Center"
+						   Width="60">属性1: </Label>
+					<ComboBox VerticalAlignment="Center" Width="100"></ComboBox>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+					<Label VerticalAlignment="Center"
+						   Width="60">属性2: </Label>
+					<ComboBox VerticalAlignment="Center"
+							  Width="100"></ComboBox>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+					<Label VerticalAlignment="Center"
+						   Width="60">特性: </Label>
+					<AutoCompleteBox VerticalAlignment="Center"
+							  Width="100"></AutoCompleteBox>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+					<Label VerticalAlignment="Center"
+						   Width="60">招式: </Label>
+					<AutoCompleteBox VerticalAlignment="Center"
+							  Width="100"></AutoCompleteBox>
+					<Button VerticalAlignment="Center"
+							Height="30" Width="30"
+							HorizontalContentAlignment="Center"
+				Margin="10,0,0,0">+</Button>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+					<Label VerticalAlignment="Center"
+						   Width="60">蛋组: </Label>
+					<Label VerticalAlignment="Center"
+							  Width="100"></Label>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+					<Label VerticalAlignment="Center"
+						   Width="60">普特: </Label>
+					<Label VerticalAlignment="Center"
+							  Width="100"></Label>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+					<Label VerticalAlignment="Center"
+						   Width="60">梦特: </Label>
+					<Label VerticalAlignment="Center"
+							  Width="100"></Label>
+				</StackPanel>
+
+
+			</StackPanel>
+			<ComboBox
+				Margin="0,20,0,0"
+				Grid.Row="1"
+				HorizontalAlignment="Center"
+				ItemsSource="{Binding SortRule}"
+				SelectedIndex="0"
+					  Width="200"></ComboBox>
+		</Grid>
+
+
+		<Grid Grid.Column="1" Grid.RowSpan="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="4*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="2*"/>
+			</Grid.ColumnDefinitions>
+			<StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+				<Image Width="50" Height="50" Source="{Binding IconImg}"></Image>
+				<Label VerticalAlignment="Center" Margin="10,0,0,0">西狮海壬</Label>
+
+				<Label VerticalAlignment="Center"
+					   Margin="100,0,0,0"
+					   Width="50">形态:</Label>
+				<ComboBox VerticalAlignment="Center"
+						  Width="100"></ComboBox>
+
+				<Label VerticalAlignment="Center"
+					   Margin="20,0,0,0"
+					   Width="50">属性:</Label>
+				<Label VerticalAlignment="Center"
+						  Width="100">水/妖精</Label>
+
+			</StackPanel>
+
+			<Grid Grid.Row="1">
+				<StackPanel>
+					<StackPanel Name="ValueStack">
+						<StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+							<Label Width="60"></Label>
+							<Label Width="60">种族值</Label>
+							<Label Width="60">个体值</Label>
+							<Label Width="60">努力值</Label>
+							<Label Width="60" Margin="10,0,0,0">能力值</Label>
+						</StackPanel>
+
+
+					</StackPanel>
+					<StackPanel Margin="0,15,0,0">
+						<StackPanel Orientation="Horizontal"
+									Spacing="10"
+									>
+							<Label Width="60"
+								   VerticalAlignment="Center"
+								   >总和</Label>
+							<Label Width="60"></Label>
+							<Button Width="60" 
+									
+									HorizontalContentAlignment="Center" 
+									VerticalContentAlignment="Center">6V</Button>
+							<Label Width="60" Margin="8,0,0,0">0</Label>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal"
+									Spacing="10"
+									Margin="0,15,0,0"
+									>
+							<Label Width="60"
+								   VerticalAlignment="Center"
+								   
+								   >性格</Label>
+							<ComboBox Width="130"></ComboBox>
+							<Label Width="60"
+								   Margin="8,0,0,0"
+								   VerticalAlignment="Center"
+								   
+								   >等级:</Label>
+							<TextBox MinWidth="60">50</TextBox>
+						</StackPanel>
+
+						<Label Margin="0,10,0,0">这个世代rss果已经不再有限制，但也被削了(悲)</Label>
+
+
+					</StackPanel>
+				</StackPanel>
+
+			</Grid>
+			<StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+				<Label>招式列表</Label>
+				<TextBox
+					Margin="0,15,0,0"
+					IsReadOnly="True"
+					Height="300" 
+					Width="150" 
+					TextWrapping="Wrap" >
+				</TextBox>
+			</StackPanel>
+		</Grid>
+
+	</Grid>
+</UserControl>
