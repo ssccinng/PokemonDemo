@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PokeCommon.Utils;
+using PokemonDataAccess;
 
 namespace PokemonSearch.ViewModels
 {
@@ -15,6 +17,11 @@ namespace PokemonSearch.ViewModels
 
         [RelayCommand]
         public void Test() => ++A;
-        
+
+        public MainWindowViewModel()
+        {
+            var aa = PokemonDBInMemory.Pokemons;
+        }
+
     }
 }

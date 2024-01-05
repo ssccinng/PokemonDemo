@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="550"
              Loaded="UserControl_Loaded"
         xmlns:vm="using:PokemonSearch.ViewModels"
+        xmlns:pkm="using:PokemonDataAccess.Models"
         x:DataType="vm:SearchViewModel"
 			 x:Class="PokemonSearch.Views.SearchView">
 	<Design.DataContext>
@@ -26,8 +27,15 @@
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 			<Label FontSize="15" VerticalAlignment="Center">符合条件的宝可梦</Label>
 			<ComboBox Width="120"
+					  ItemsSource="{Binding Pokemons}"
 				Margin="0,15,0,0"
-				HorizontalAlignment="Center" ></ComboBox>
+				HorizontalAlignment="Center" >
+				<ComboBox.ItemTemplate>
+					<DataTemplate DataType="pkm:Pokemon">
+						<TextBlock Text="{Binding NameChs}"  />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
 		</StackPanel>
 		<Grid
 			Grid.Row="1"
@@ -42,19 +50,39 @@
 				<StackPanel Orientation="Horizontal" >
 					<Label VerticalAlignment="Center"
 						   Width="60">属性1: </Label>
-					<ComboBox VerticalAlignment="Center" Width="100"></ComboBox>
+					<ComboBox VerticalAlignment="Center"
+							  ItemsSource="{Binding TypeList}"
+							  SelectedIndex="0"
+							   
+							  Width="100">
+						<ComboBox.ItemTemplate>
+							<DataTemplate DataType="pkm:PokeType">
+								<TextBlock Text="{Binding Name_Chs}"  />
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
 					<Label VerticalAlignment="Center"
 						   Width="60">属性2: </Label>
 					<ComboBox VerticalAlignment="Center"
-							  Width="100"></ComboBox>
+							  ItemsSource="{Binding TypeList}"
+							  SelectedIndex="0"
+							   
+							  Width="100">
+						<ComboBox.ItemTemplate>
+							<DataTemplate DataType="pkm:PokeType">
+								<TextBlock Text="{Binding Name_Chs}"  />
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
 				</StackPanel>
 
 				<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
 					<Label VerticalAlignment="Center"
 						   Width="60">特性: </Label>
 					<AutoCompleteBox VerticalAlignment="Center"
+									   ItemsSource="{Binding Abilities}"
 							  Width="100"></AutoCompleteBox>
 				</StackPanel>
 

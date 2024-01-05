@@ -13,6 +13,9 @@ namespace PokemonSearch.Views
             
             DataContext = ViewModel;
             InitializeComponent();
+
+
+            
             //ViewModel = (MainWindowViewModel?)DataContext;
         }
 

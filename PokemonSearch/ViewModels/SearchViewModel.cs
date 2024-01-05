@@ -1,5 +1,7 @@
 ﻿using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
+using PokeCommon.Utils;
+using PokemonDataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +34,8 @@ namespace PokemonSearch.ViewModels
         [ObservableProperty]
         //string _iconImg = "/Assets/img_pokei128/icon0000_f00_s0.png";
         Bitmap _iconImg = ImageHelper.LoadFromResource(new Uri("avares://PokemonSearch/Assets/img_pokei128/icon0730_f00_s0.png"));
-
+        public PokeType[] TypeList { get; set; } = PokemonDBInMemory.Types.Prepend(new PokeType { Name_Chs = "(无)"}).ToArray();
+        public string[] Abilities { get; set; } = PokemonDBInMemory.Abilities.Select(s => s.Name_Chs).ToArray();
+        public Pokemon[] Pokemons { get; set; } = PokemonDBInMemory.Pokemons.ToArray();
     }
 }

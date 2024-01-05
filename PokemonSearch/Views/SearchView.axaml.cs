@@ -36,4 +36,10 @@ public partial class SearchView : UserControl
             ValueStack.Children.Add(panel);
         }
     }
+
+
+    void Update()
+    {
+
+    }
 }
